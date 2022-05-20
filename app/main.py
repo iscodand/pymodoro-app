@@ -85,7 +85,7 @@ class PomodoroTimer():
 
             if not self.stopped or self.skipped:
                 self.pomodoros += 1
-                self.pomodoros_counter_label.config(
+                self.pomodoros_count_label.config(
                     text=f"Pomodoros {self.pomodoros}")
 
                 if self.pomodoros % 4 == 0:
