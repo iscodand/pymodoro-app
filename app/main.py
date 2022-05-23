@@ -2,21 +2,24 @@ import threading
 import time
 import tkinter as tk
 from tkinter import ttk
+from playsound import playsound
 
 
 class PomodoroTimer():
     def __init__(self):
         self.root = tk.Tk()
-        self.root.geometry("500x400")
+        self.root.geometry("500x425")
         self.root.title("Pymodoro Timer")
+        self.root.call('wm', 'iconphoto', self.root._w, tk.PhotoImage(
+            file='app\icon\pymodoro-icon.png'))
 
         # Interface Layout
         self.s = ttk.Style()
-        self.s.configure("TNotebook.Tab", font=("Unbutu", 12))
+        self.s.configure("TNotebook.Tab", padding=6, font=("Unbutu", 12))
         self.s.configure("TButton", font=("Unbutu", 12))
 
         self.tabs = ttk.Notebook(self.root)
-        self.tabs.pack(fill="both", pady=10, padx=10, expand=True)
+        self.tabs.pack(fill="both", pady=50, padx=50)
 
         self.tab1 = ttk.Frame(self.tabs, width=600, height=100)
         self.tab2 = ttk.Frame(self.tabs, width=600, height=100)
@@ -39,19 +42,19 @@ class PomodoroTimer():
         self.tabs.add(self.tab3, text="Long Break")
 
         self.grid_layout = ttk.Frame(self.root)
-        self.grid_layout.pack(pady=20)
+        self.grid_layout.pack()
 
         self.start_button = ttk.Button(
             self.grid_layout, text="Start", command=self.start_timer_thread)
-        self.start_button.grid(row=0, column=0)
+        self.start_button.grid(row=0, column=0, padx=10)
 
         self.reset_button = ttk.Button(
             self.grid_layout, text="Reset", command=self.reset_clock)
-        self.reset_button.grid(row=0, column=1)
+        self.reset_button.grid(row=0, column=1, padx=10)
 
         self.skip_button = ttk.Button(
             self.grid_layout, text="Skip", command=self.skip_clock)
-        self.skip_button.grid(row=0, column=2)
+        self.skip_button.grid(row=0, column=2, padx=10)
 
         self.pomodoros_count_label = ttk.Label(
             self.grid_layout, text="Pomodoros: 0", font=("Ubuntu", 12))
@@ -89,7 +92,7 @@ class PomodoroTimer():
             if not self.stopped or self.skipped:
                 self.pomodoros += 1
                 self.pomodoros_count_label.config(
-                    text=f"Pomodoros {self.pomodoros}")
+                    text=f"Pomodoros: {self.pomodoros}")
 
                 if self.pomodoros % 4 == 0:
                     self.tabs.select(2)
