@@ -18,7 +18,6 @@ class PomodoroTimer(PomodoroInterface):
 
         if timer_id == 1:
             full_seconds = 60 * 25
-            full_seconds = 5
 
             while full_seconds > 0 and not self.stopped:
                 minutes, seconds = divmod(full_seconds, 60)
@@ -45,7 +44,6 @@ class PomodoroTimer(PomodoroInterface):
 
         elif timer_id == 2:
             full_seconds = 60 * 5
-            full_seconds = 5
 
             while full_seconds > 0 and not self.stopped:
                 minutes, seconds = divmod(full_seconds, 60)
@@ -63,7 +61,6 @@ class PomodoroTimer(PomodoroInterface):
 
         elif timer_id == 3:
             full_seconds = 60 * 15
-            full_seconds = 5
 
             while full_seconds > 0 and not self.stopped:
                 minutes, seconds = divmod(full_seconds, 60)
