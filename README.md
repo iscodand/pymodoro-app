@@ -1,6 +1,6 @@
 <h1 align="center"> Pymodoro App </h1>
 
-<h5 align="center"> Um aplicativo feito totalmente com Python, usando a biblioteca Tkinter e alguns módulos adicionais. </h5>
+<h5 align="center"> Pymodoro App, aumente sua produtividade seja codando, estudando ou trabalhando :) </h5>
 
 <h3> ✔️ Técnicas e tecnologias utilizadas ✔️ </h3>
 
