@@ -2,6 +2,8 @@
 
 <h5 align="center"> Pymodoro App, aumente sua produtividade seja codando, estudando ou trabalhando :) </h5>
 
+<h5 align="center"> :construction: Projeto em Construção :construction: </h5>
+
 <h3> ✔️ Técnicas e tecnologias utilizadas ✔️ </h3>
 
 - ``Python 3.10.4``
