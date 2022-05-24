@@ -1,12 +1,13 @@
 import tkinter as tk
 import sv_ttk
-from tkinter import TOP, ttk
+import time
+from tkinter import ttk
 
 
 class PomodoroInterface():
     def __init__(self):
         self.root = tk.Tk()
-        self.root.geometry("600x600")
+        self.root.geometry("550x550")
         self.root.title("Pymodoro Timer")
         self.root.call('wm', 'iconphoto', self.root._w, tk.PhotoImage(
             file='app\icon\pymodoro-icon.png'))
@@ -15,15 +16,15 @@ class PomodoroInterface():
         self.s = ttk.Style()
         self.s.configure("TNotebook.Tab", padding=6, font=("Unbutu", 12))
         self.s.configure("TButton", font=("Unbutu", 12))
-        
+
         sv_ttk.set_theme("dark")
 
         self.tabs = ttk.Notebook(self.root)
         self.tabs.pack(fill="both", pady=50, padx=50)
 
-        self.tab1 = ttk.Frame(self.tabs, width=600, height=100)
-        self.tab2 = ttk.Frame(self.tabs, width=600, height=100)
-        self.tab3 = ttk.Frame(self.tabs, width=600, height=100)
+        self.tab1 = ttk.Frame(self.tabs)
+        self.tab2 = ttk.Frame(self.tabs)
+        self.tab3 = ttk.Frame(self.tabs)
 
         self.pomodoro_timer_label = ttk.Label(
             self.tab1, text="25:00", font=("Unbutu", 50))
@@ -45,24 +46,24 @@ class PomodoroInterface():
         self.grid_layout.pack()
 
         self.start_button = ttk.Button(
-            self.grid_layout, text="Start", command=self.start_timer_thread)
-        self.start_button.grid(row=0, column=0, padx=10)
+            self.grid_layout, text="Start", command=self.start_timer_thread, width=20)
+        self.start_button.grid(row=0, column=1, padx=10)
 
         self.reset_button = ttk.Button(
             self.grid_layout, text="Reset", command=self.reset_clock)
-        self.reset_button.grid(row=0, column=1, padx=10)
+        self.reset_button.grid(row=0, column=0, padx=10)
 
         self.skip_button = ttk.Button(
             self.grid_layout, text="Skip", command=self.skip_clock)
         self.skip_button.grid(row=0, column=2, padx=10)
 
-        self.pomodoros_count_label = ttk.Label(
-            self.grid_layout, text="Pomodoros: 0", font=("Ubuntu Bold", 14))
-        self.pomodoros_count_label.grid(row=1, column=1, pady=30)
-
         self.choose_theme_button = ttk.Button(
             self.grid_layout, text="Theme", command=self.choose_theme)
         self.choose_theme_button.grid(row=2, column=1, pady=30)
+
+        self.pomodoros_count_label = ttk.Label(
+            self.grid_layout, text="Pomodoros: 0", font=("Ubuntu Bold", 14))
+        self.pomodoros_count_label.grid(row=1, column=1, pady=30)
 
         self.pomodoros = 0
         self.stopped = False
@@ -73,4 +74,5 @@ class PomodoroInterface():
         self.root.mainloop()
 
     def choose_theme(self):
+        time.sleep(0.25)
         return sv_ttk.toggle_theme()
