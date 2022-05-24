@@ -1,6 +1,6 @@
 import threading
 import time
-from playsound import playsound
+import winsound
 from interface import PomodoroInterface
 
 
@@ -18,7 +18,6 @@ class PomodoroTimer(PomodoroInterface):
 
         if timer_id == 1:
             full_seconds = 60 * 25
-            full_seconds = 3
 
             while full_seconds > 0 and not self.stopped:
                 minutes, seconds = divmod(full_seconds, 60)
@@ -29,14 +28,20 @@ class PomodoroTimer(PomodoroInterface):
                 full_seconds -= 1
 
             if not self.stopped or self.skipped:
+                winsound.PlaySound(sound="app\sounds\sound.wav",
+                                   flags=winsound.SND_FILENAME)
                 self.pomodoros += 1
                 self.pomodoros_count_label.config(
                     text=f"Pomodoros: {self.pomodoros}")
 
                 if self.pomodoros % 4 == 0:
+                    winsound.PlaySound(sound="app\sounds\sound.wav",
+                                       flags=winsound.SND_FILENAME)
                     self.tabs.select(2)
 
                 else:
+                    winsound.PlaySound(sound="app\sounds\sound.wav",
+                                       flags=winsound.SND_FILENAME)
                     self.tabs.select(1)
 
                 self.start_timer()

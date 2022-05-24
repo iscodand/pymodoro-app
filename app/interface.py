@@ -1,6 +1,6 @@
 import tkinter as tk
 import sv_ttk
-from tkinter import ttk
+from tkinter import TOP, ttk
 
 
 class PomodoroInterface():
@@ -24,7 +24,8 @@ class PomodoroInterface():
         self.tab1 = ttk.Frame(self.tabs, width=600, height=100)
         self.tab2 = ttk.Frame(self.tabs, width=600, height=100)
         self.tab3 = ttk.Frame(self.tabs, width=600, height=100)
-
+        self.tab4 = ttk.Frame(self.tabs, width=600, height=100)
+        
         self.pomodoro_timer_label = ttk.Label(
             self.tab1, text="25:00", font=("Unbutu", 50))
         self.pomodoro_timer_label.pack(pady=50)
