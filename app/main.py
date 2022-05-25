@@ -32,7 +32,7 @@ class PomodoroTimer(PomodoroInterface):
                                    flags=winsound.SND_FILENAME)
                 self.pomodoros += 1
                 self.pomodoros_count_label.config(
-                    text=f"Pomodoros: {self.pomodoros}")
+                    text=f"Pomodoros #{self.pomodoros}")
 
                 if self.pomodoros % 4 == 0:
                     self.tabs.select(2)
@@ -87,7 +87,7 @@ class PomodoroTimer(PomodoroInterface):
         self.pomodoro_timer_label.config(text="25:00")
         self.short_break_timer_label.config(text="05:00")
         self.long_break_timer_label.config(text="15:00")
-        self.pomodoros_count_label.config(text="Pomodoros: 0")
+        self.pomodoros_count_label.config(text="Pomodoros #1")
 
     def skip_clock(self):
         current_tab = self.tabs.index(self.tabs.select())

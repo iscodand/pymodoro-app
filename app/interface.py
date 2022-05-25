@@ -14,29 +14,33 @@ class PomodoroInterface():
 
         # Interface Layout
         self.s = ttk.Style()
-        self.s.configure("TNotebook.Tab", padding=6, font=("Unbutu", 12))
-        self.s.configure("TButton", font=("Unbutu", 12))
+        self.s.configure("TNotebook.Tab", padding=6, font=("Montserrat", 12))
+        self.s.configure("TButton", font=("Montserrat", 12))
 
         sv_ttk.set_theme("dark")
 
-        self.tabs = ttk.Notebook(self.root)
-        self.tabs.pack(fill="both", pady=50, padx=50)
+        self.tabs = ttk.Notebook(self.root, width=150)
+        self.tabs.pack(pady=50, padx=50)
 
         self.tab1 = ttk.Frame(self.tabs)
         self.tab2 = ttk.Frame(self.tabs)
         self.tab3 = ttk.Frame(self.tabs)
 
         self.pomodoro_timer_label = ttk.Label(
-            self.tab1, text="25:00", font=("Unbutu", 50))
+            self.tab1, text="25:00", font=("Montserrat", 50))
         self.pomodoro_timer_label.pack(pady=50)
 
         self.short_break_timer_label = ttk.Label(
-            self.tab2, text="05:00", font=("Unbutu", 50))
+            self.tab2, text="05:00", font=("Montserrat", 50))
         self.short_break_timer_label.pack(pady=50)
 
         self.long_break_timer_label = ttk.Label(
-            self.tab3, text="15:00", font=("Unbutu", 50))
+            self.tab3, text="15:00", font=("Montserrat", 50))
         self.long_break_timer_label.pack(pady=50)
+
+        self.pomodoros_count_label = ttk.Label(
+            self.tab1, text="Pomodoro #1", font=("Montserrat Thin", 10))
+        self.pomodoros_count_label.pack(pady=20)
 
         self.tabs.add(self.tab1, text="Code Time")
         self.tabs.add(self.tab2, text="Coffee")
@@ -57,15 +61,17 @@ class PomodoroInterface():
             self.grid_layout, text="Skip", command=self.skip_clock)
         self.skip_button.grid(row=0, column=2, padx=10)
 
+        self.choose_theme_icon = tk.PhotoImage(file="app\icon\light_icon.png")
+        self.choose_theme_icon_sample = self.choose_theme_icon.subsample(10, 10)
+
         self.choose_theme_button = ttk.Button(
-            self.grid_layout, text="Theme", command=self.choose_theme)
+            self.grid_layout,
+            image=self.choose_theme_icon_sample,
+            compound="center",
+            command=self.choose_theme)
         self.choose_theme_button.grid(row=2, column=1, pady=30)
 
-        self.pomodoros_count_label = ttk.Label(
-            self.grid_layout, text="Pomodoros: 0", font=("Ubuntu Bold", 14))
-        self.pomodoros_count_label.grid(row=1, column=1, pady=30)
-
-        self.pomodoros = 0
+        self.pomodoros = 1
         self.stopped = False
         self.skipped = False
         self.running = False
