@@ -4,10 +4,14 @@
 
 <h2 align="center"> </h2>
 
+> Pymodoro App Images
+
 <p float="center">
-  <img hspace=80 src="https://user-images.githubusercontent.com/81825284/170553480-da45748f-7a7b-40b9-a883-7d3af08b1fd7.png" >
-  <img src="https://user-images.githubusercontent.com/81825284/170553485-d53114e3-128b-4ab3-b703-eef02789f49a.png">
+  <img width=350 src="https://user-images.githubusercontent.com/81825284/170553480-da45748f-7a7b-40b9-a883-7d3af08b1fd7.png" >
+  <img width=350 src="https://user-images.githubusercontent.com/81825284/170553485-d53114e3-128b-4ab3-b703-eef02789f49a.png">
 </p>
+
+> Um aplicativo feito totalmente com Python e Tkinter
 
 <h2 align="center"> </h2>
 
