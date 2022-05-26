@@ -21,13 +21,13 @@ class PomodoroTimer(PomodoroInterface):
             while full_seconds > 0 and not self.stopped:
                 minutes, seconds = divmod(full_seconds, 60)
                 self.pomodoro_timer_label.config(
-                    text=f"{minutes:02d}:{seconds:02d}")
+                    text=f"{minutes:02d} {seconds:02d}")
                 self.root.update()
                 time.sleep(1)
                 full_seconds -= 1
 
             if not self.stopped or self.skipped:
-                winsound.PlaySound(sound="app\sounds\sound.wav",
+                winsound.PlaySound(sound="app/assets/sounds/sound.wav",
                                    flags=winsound.SND_FILENAME)
                 self.pomodoros += 1
                 self.pomodoros_count_label.config(
@@ -47,13 +47,13 @@ class PomodoroTimer(PomodoroInterface):
             while full_seconds > 0 and not self.stopped:
                 minutes, seconds = divmod(full_seconds, 60)
                 self.short_break_timer_label.config(
-                    text=f"{minutes:02d}:{seconds:02d}")
+                    text=f"{minutes:02d} {seconds:02d}")
                 self.root.update()
                 time.sleep(1)
                 full_seconds -= 1
 
             if not self.stopped or self.skipped:
-                winsound.PlaySound(sound="app\sounds\sound.wav",
+                winsound.PlaySound(sound="app/assets/sounds/sound.wav",
                                     flags=winsound.SND_FILENAME)
                 self.tabs.select(0)
                 self.start_timer()
@@ -64,13 +64,13 @@ class PomodoroTimer(PomodoroInterface):
             while full_seconds > 0 and not self.stopped:
                 minutes, seconds = divmod(full_seconds, 60)
                 self.long_break_timer_label.config(
-                    text=f"{minutes:02d}:{seconds:02d}")
+                    text=f"{minutes:02d} {seconds:02d}")
                 self.root.update()
                 time.sleep(1)
                 full_seconds -= 1
 
             if not self.stopped or self.skipped:
-                winsound.PlaySound(sound="app\sounds\sound.wav",
+                winsound.PlaySound(sound="app/assets/sounds/sound.wav",
                                    flags=winsound.SND_FILENAME)
                 self.tabs.select(0)
                 self.start_timer()
@@ -83,20 +83,20 @@ class PomodoroTimer(PomodoroInterface):
         self.skipped = False
         self.running = False
         self.pomodoros = 0
-        self.pomodoro_timer_label.config(text="25:00")
-        self.short_break_timer_label.config(text="05:00")
-        self.long_break_timer_label.config(text="15:00")
+        self.pomodoro_timer_label.config(text="25 00")
+        self.short_break_timer_label.config(text="05 00")
+        self.long_break_timer_label.config(text="15 00")
         self.pomodoros_count_label.config(text="Pomodoro #1")
 
     def skip_clock(self):
         current_tab = self.tabs.index(self.tabs.select())
 
         if current_tab == 0:
-            self.pomodoro_timer_label.config(text="25:00")
+            self.pomodoro_timer_label.config(text="25 00")
         elif current_tab == 1:
-            self.short_break_timer_label.config(text="05:00")
+            self.short_break_timer_label.config(text="05 00")
         elif current_tab == 2:
-            self.long_break_timer_label.config(text="15:00")
+            self.long_break_timer_label.config(text="15 00")
 
         self.skipped = True
         self.stopped = True
