@@ -1,5 +1,6 @@
 from interface import PomodoroInterface
 from timer import PomodoroTimer
 
-PomodoroTimer()
-PomodoroInterface()
+if __name__ == '__main__':
+    PomodoroTimer()
+    PomodoroInterface()

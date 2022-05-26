@@ -5,6 +5,10 @@ from interface import PomodoroInterface
 
 class PomodoroTimer(PomodoroInterface):
     def start_timer_thread(self):
+        self.pomodoros = 1
+        self.stopped = False
+        self.skipped = False
+        self.running = False
         if not self.running:
             t = threading.Thread(target=self.start_timer)
             t.start()

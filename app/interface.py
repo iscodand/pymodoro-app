@@ -82,12 +82,6 @@ class PomodoroInterface():
             command=self.choose_theme)
         self.choose_theme_button.grid(row=2, column=1, pady=30)
 
-        # Set the fundamentals to PomodoroTimer Class
-        self.pomodoros = 1
-        self.stopped = False
-        self.skipped = False
-        self.running = False
-
         self.root.resizable(False, False)
         self.root.mainloop()
 
