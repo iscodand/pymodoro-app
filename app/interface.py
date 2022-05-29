@@ -3,8 +3,7 @@ import sv_ttk
 import time
 from tkinter import ttk
 
-
-class PomodoroInterface():
+class PymodoroInterface():
     def __init__(self):
         self.root = tk.Tk()
         self.root.geometry("400x550")

@@ -1,9 +1,10 @@
 import threading
 import time
 import winsound
-from interface import PomodoroInterface
+from interface import PymodoroInterface
+from notifications import PymodoroNotifications
 
-class PomodoroTimer(PomodoroInterface):
+class PymodoroTimer(PymodoroInterface, PymodoroNotifications):
     def start_timer_thread(self):
         self.pomodoros = 1
         self.stopped = False
@@ -21,6 +22,7 @@ class PomodoroTimer(PomodoroInterface):
 
         if timer_id == 1:
             full_seconds = 60 * 25
+            full_seconds = 5
 
             while full_seconds > 0 and not self.stopped:
                 minutes, seconds = divmod(full_seconds, 60)
@@ -31,6 +33,7 @@ class PomodoroTimer(PomodoroInterface):
                 full_seconds -= 1
 
             if not self.stopped or self.skipped:
+                self.code_time_notification()
                 winsound.PlaySound(sound="app/assets/sounds/sound.wav",
                                    flags=winsound.SND_FILENAME)
                 self.pomodoros += 1
@@ -47,6 +50,7 @@ class PomodoroTimer(PomodoroInterface):
 
         elif timer_id == 2:
             full_seconds = 60 * 5
+            full_seconds = 5
 
             while full_seconds > 0 and not self.stopped:
                 minutes, seconds = divmod(full_seconds, 60)
@@ -57,6 +61,7 @@ class PomodoroTimer(PomodoroInterface):
                 full_seconds -= 1
 
             if not self.stopped or self.skipped:
+                self.short_break_time_notification()
                 winsound.PlaySound(sound="app/assets/sounds/sound.wav",
                                     flags=winsound.SND_FILENAME)
                 self.tabs.select(0)
@@ -74,6 +79,7 @@ class PomodoroTimer(PomodoroInterface):
                 full_seconds -= 1
 
             if not self.stopped or self.skipped:
+                self.long_break_time_notification()
                 winsound.PlaySound(sound="app/assets/sounds/sound.wav",
                                    flags=winsound.SND_FILENAME)
                 self.tabs.select(0)

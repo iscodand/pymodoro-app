@@ -1,6 +1,4 @@
-from interface import PomodoroInterface
-from timer import PomodoroTimer
+from timer import PymodoroTimer
 
 if __name__ == '__main__':
-    PomodoroTimer()
-    PomodoroInterface()
+    PymodoroTimer()
