@@ -4,7 +4,10 @@ import winsound
 from interface import PymodoroInterface
 from notifications import PymodoroNotifications
 
+
 class PymodoroTimer(PymodoroInterface, PymodoroNotifications):
+
+    # Config of Thread Timer
     def start_timer_thread(self):
         self.pomodoros = 1
         self.stopped = False
@@ -15,22 +18,49 @@ class PymodoroTimer(PymodoroInterface, PymodoroNotifications):
             t.start()
             self.running = True
 
+    # Defining main timer loop
+    def timer_loop(self, full_seconds):
+        timer_id = self.tabs.index(self.tabs.select()) + 1
+
+        while full_seconds > 0 and not self.stopped:
+            minutes, seconds = divmod(full_seconds, 60)
+
+            if timer_id == 1:
+                self.pomodoro_timer_label.config(
+                    text=f"{minutes:02d} {seconds:02d}")
+
+            elif timer_id == 2:
+                self.short_break_timer_label.config(
+                    text=f"{minutes:02d} {seconds:02d}")
+
+            elif timer_id == 3:
+                self.long_break_timer_label.config(
+                    text=f"{minutes:02d} {seconds:02d}")
+
+            self.root.update()
+            time.sleep(1)
+            full_seconds -= 1
+
+    # Here is the pre start timer, a 5 seconds timer before the Pomodoro timer starts
+    def pre_start_timer(self):
+        full_seconds = 5
+
+        self.timer_loop(full_seconds)
+
+    # Here is the main logic of the timer, simple, but powerful
     def start_timer(self):
         self.stopped = False
         self.skipped = False
         timer_id = self.tabs.index(self.tabs.select()) + 1
 
-        if timer_id == 1:
-            full_seconds = 60 * 25
-            full_seconds = 5
+        full_seconds = 60 * 25
+        short_break_seconds = 60 * 5
+        long_break_seconds = 60 * 15
 
-            while full_seconds > 0 and not self.stopped:
-                minutes, seconds = divmod(full_seconds, 60)
-                self.pomodoro_timer_label.config(
-                    text=f"{minutes:02d} {seconds:02d}")
-                self.root.update()
-                time.sleep(1)
-                full_seconds -= 1
+        if timer_id == 1:
+            self.pre_start_timer()
+
+            self.timer_loop(full_seconds)
 
             if not self.stopped or self.skipped:
                 self.code_time_notification()
@@ -49,34 +79,22 @@ class PymodoroTimer(PymodoroInterface, PymodoroNotifications):
                 self.start_timer()
 
         elif timer_id == 2:
-            full_seconds = 60 * 5
-            full_seconds = 5
+            self.pre_start_timer()
 
-            while full_seconds > 0 and not self.stopped:
-                minutes, seconds = divmod(full_seconds, 60)
-                self.short_break_timer_label.config(
-                    text=f"{minutes:02d} {seconds:02d}")
-                self.root.update()
-                time.sleep(1)
-                full_seconds -= 1
+            self.timer_loop(short_break_seconds)
 
             if not self.stopped or self.skipped:
                 self.short_break_time_notification()
                 winsound.PlaySound(sound="app/assets/sounds/sound.wav",
-                                    flags=winsound.SND_FILENAME)
+                                   flags=winsound.SND_FILENAME)
                 self.tabs.select(0)
+
                 self.start_timer()
 
         elif timer_id == 3:
-            full_seconds = 60 * 15
+            self.pre_start_timer()
 
-            while full_seconds > 0 and not self.stopped:
-                minutes, seconds = divmod(full_seconds, 60)
-                self.long_break_timer_label.config(
-                    text=f"{minutes:02d} {seconds:02d}")
-                self.root.update()
-                time.sleep(1)
-                full_seconds -= 1
+            self.timer_loop(long_break_seconds)
 
             if not self.stopped or self.skipped:
                 self.long_break_time_notification()
@@ -110,3 +128,6 @@ class PymodoroTimer(PymodoroInterface, PymodoroNotifications):
 
         self.skipped = True
         self.stopped = True
+
+
+PymodoroTimer()
