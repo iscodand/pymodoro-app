@@ -3,6 +3,7 @@ import sv_ttk
 import time
 from tkinter import ttk
 
+
 class PymodoroInterface():
     def __init__(self):
         self.root = tk.Tk()
@@ -70,7 +71,8 @@ class PymodoroInterface():
             self.grid_layout, text="Skip", command=self.skip_clock)
         self.skip_button.grid(row=0, column=2, padx=10)
 
-        self.choose_theme_icon = tk.PhotoImage(file="app/assets/icons/light_icon.png")
+        self.choose_theme_icon = tk.PhotoImage(
+            file="app/assets/icons/light_icon.png")
         self.choose_theme_icon_sample = self.choose_theme_icon.subsample(
             10, 10)
 

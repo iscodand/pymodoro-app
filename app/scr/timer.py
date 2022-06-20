@@ -130,4 +130,5 @@ class PymodoroTimer(PymodoroInterface, PymodoroNotifications):
         self.stopped = True
 
 
-PymodoroTimer()
+if __name__ == "__main__":
+    PymodoroTimer()
