@@ -40,15 +40,15 @@ class PymodoroInterface():
         self.long_break_timer_label.pack(pady=50)
 
         self.pomodoros_count_label = ttk.Label(
-            self.tab1, text="Pomodoro #1", font=("Montserrat Thin", 9))
+            self.tab1, text="Pomodoro #1", font=("Montserrat Regular", 9))
         self.pomodoros_count_label.pack(pady=20)
 
         self.short_break_note_label = ttk.Label(
-            self.tab2, text="Coffee Time!", font=("Montserrat Thin", 9))
+            self.tab2, text="Coffee Time!", font=("Montserrat Regular", 9))
         self.short_break_note_label.pack(pady=20)
 
         self.long_break_note_label = ttk.Label(
-            self.tab3, text="Long Rest Time!", font=("Montserrat Thin", 9))
+            self.tab3, text="Long Rest Time!", font=("Montserrat Regular", 9))
         self.long_break_note_label.pack(pady=20)
 
         self.tabs.add(self.tab1, text="  Code Time   ")

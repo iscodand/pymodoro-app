@@ -88,7 +88,6 @@ class PymodoroTimer(PymodoroInterface, PymodoroNotifications):
                 winsound.PlaySound(sound="app/assets/sounds/sound.wav",
                                    flags=winsound.SND_FILENAME)
                 self.tabs.select(0)
-
                 self.start_timer()
 
         elif timer_id == 3:
