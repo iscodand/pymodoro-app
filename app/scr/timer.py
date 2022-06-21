@@ -128,7 +128,3 @@ class PymodoroTimer(PymodoroInterface, PymodoroNotifications):
 
         self.skipped = True
         self.stopped = True
-
-
-if __name__ == "__main__":
-    PymodoroTimer()

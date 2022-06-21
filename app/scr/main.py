@@ -1,8 +1,5 @@
-from timer import PymodoroTimer
-from interface import PymodoroInterface
-from notifications import PymodoroNotifications
+# Here have the executable of all Program
 
-if __name__ == '__main__':
-    PymodoroTimer()
-    PymodoroInterface()
-    PymodoroNotifications()
+from timer import PymodoroTimer
+
+PymodoroTimer()

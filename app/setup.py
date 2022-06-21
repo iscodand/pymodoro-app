@@ -15,5 +15,5 @@ setup(
     version="0.1",
     description="Pymodoro App! Increase your Productivity.",
     options={"build_exe": build_exe_options},
-    executables=[Executable("app.py", base=base)]
+    executables=[Executable("main.py", base=base)]
 )
