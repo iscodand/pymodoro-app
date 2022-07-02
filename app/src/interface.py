@@ -5,7 +5,7 @@ from tkinter import ttk
 
 
 class PymodoroInterface():
-    def __init__(self):
+    def pymodoro_interface(self):
         self.root = tk.Tk()
         self.root.geometry("400x550")
         self.root.title("Pymodoro Timer")

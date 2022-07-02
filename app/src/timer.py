@@ -6,13 +6,15 @@ from notifications import PymodoroNotifications
 
 
 class PymodoroTimer(PymodoroInterface, PymodoroNotifications):
-
-    # Config of Thread Timer
-    def start_timer_thread(self):
+    def __init__(self):
         self.pomodoros = 1
         self.stopped = False
         self.skipped = False
         self.running = False
+        self.pymodoro_interface()
+
+    # Config of Thread Timer
+    def start_timer_thread(self):
         if not self.running:
             t = threading.Thread(target=self.start_timer)
             t.start()
@@ -59,10 +61,10 @@ class PymodoroTimer(PymodoroInterface, PymodoroNotifications):
 
         if timer_id == 1:
             self.pre_start_timer()
-
+            
             self.timer_loop(full_seconds)
 
-            if not self.stopped or self.skipped:
+            if not self.stopped or self.skipped or self.running:
                 self.code_time_notification()
                 winsound.PlaySound(sound="app/assets/sounds/sound.wav",
                                    flags=winsound.SND_FILENAME)
@@ -104,7 +106,7 @@ class PymodoroTimer(PymodoroInterface, PymodoroNotifications):
 
         else:
             print('Invalid Timer ID!')
-
+    
     def reset_clock(self):
         self.stopped = True
         self.skipped = False
