@@ -64,7 +64,7 @@ class PymodoroTimer(PymodoroInterface, PymodoroNotifications):
             
             self.timer_loop(full_seconds)
 
-            if not self.stopped or self.skipped or self.running:
+            if not self.stopped or self.skipped:
                 self.code_time_notification()
                 winsound.PlaySound(sound="app/assets/sounds/sound.wav",
                                    flags=winsound.SND_FILENAME)
@@ -108,6 +108,7 @@ class PymodoroTimer(PymodoroInterface, PymodoroNotifications):
             print('Invalid Timer ID!')
     
     def reset_clock(self):
+        self.tabs.select(0)
         self.stopped = True
         self.skipped = False
         self.running = False
