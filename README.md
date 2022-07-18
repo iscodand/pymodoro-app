@@ -49,7 +49,7 @@ Read more on this website: [Pomodoro Technique](https://www.google.com/url?sa=t&
 To Install this project in your machine, follow the steps above:
 ```bash
 # Clone this repository
-$ git clone https://github.com/iscodand/brazilian-document-validator/
+$ git clone https://github.com/iscodand/pymodoro-app/
                         
 # Create a virtual environment (optional but recommended):
 $ python -m venv venv
